@@ -1,0 +1,22 @@
+main {
+  margin-top: 60px;
+}
+
+form {
+  width: 350px;
+  margin-bottom: 10px;
+}
+
+ul {
+  margin-bottom: 0px;
+}
+
+.todo-content {
+  font-style: italic;
+}
+
+#completedTodoList .todo-content, 
+#completedTodoList .todo-title {
+  color: grey;
+  text-decoration: line-through;
+}

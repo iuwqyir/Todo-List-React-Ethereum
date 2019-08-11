@@ -1,5 +1,20 @@
-export const TODO_LIST_ADDRESS = '';
+export const TODO_LIST_ADDRESS = '0x6C202366d70e4d034CEafD4e020bf6625dF9FC86';
 export const TODO_LIST_ABI = [
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "newItemIndex",
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function",
+      "signature": "0x1c1fb29b"
+    },
     {
       "constant": true,
       "inputs": [
@@ -8,30 +23,34 @@ export const TODO_LIST_ABI = [
           "type": "uint256"
         }
       ],
-      "name": "tasks",
+      "name": "todoItems",
       "outputs": [
         {
           "name": "id",
           "type": "uint256"
         },
         {
+          "name": "title",
+          "type": "string"
+        },
+        {
           "name": "content",
           "type": "string"
         },
         {
-          "name": "completed",
+          "name": "isCompleted",
           "type": "bool"
         }
       ],
       "payable": false,
       "stateMutability": "view",
       "type": "function",
-      "signature": "0x8d977672"
+      "signature": "0xc627e610"
     },
     {
       "constant": true,
       "inputs": [],
-      "name": "taskCount",
+      "name": "todoItemCount",
       "outputs": [
         {
           "name": "",
@@ -41,7 +60,7 @@ export const TODO_LIST_ABI = [
       "payable": false,
       "stateMutability": "view",
       "type": "function",
-      "signature": "0xb6cb58a5"
+      "signature": "0xe9945893"
     },
     {
       "inputs": [],
@@ -60,18 +79,23 @@ export const TODO_LIST_ABI = [
         },
         {
           "indexed": false,
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "indexed": false,
           "name": "content",
           "type": "string"
         },
         {
           "indexed": false,
-          "name": "completed",
+          "name": "isCompleted",
           "type": "bool"
         }
       ],
-      "name": "TaskCreated",
+      "name": "TodoItemCreated",
       "type": "event",
-      "signature": "0x05d0fb833127fc08168556d0e7ca9554fc3f6bc843b3b7d2bf1c35aea6bab660"
+      "signature": "0x79253a2e1b2cf5ab9f8f6e3694ba99d86d26ce6ce34cb7d517bb32511d7bb610"
     },
     {
       "anonymous": false,
@@ -87,24 +111,28 @@ export const TODO_LIST_ABI = [
           "type": "bool"
         }
       ],
-      "name": "TaskCompleted",
+      "name": "TodoItemToggled",
       "type": "event",
-      "signature": "0xe21fa966ca5cd02748c0752352d18c48165e61cb55b4c29cccf924b5a95fcff1"
+      "signature": "0x4a2e02c4dbeb7254557b977cbb7f5af66fc46150ee3cb2fefcc96ae4f27bdd62"
     },
     {
       "constant": false,
       "inputs": [
         {
+          "name": "_title",
+          "type": "string"
+        },
+        {
           "name": "_content",
           "type": "string"
         }
       ],
-      "name": "createTask",
+      "name": "createTodoItem",
       "outputs": [],
       "payable": false,
       "stateMutability": "nonpayable",
       "type": "function",
-      "signature": "0x111002aa"
+      "signature": "0xc8eca9a6"
     },
     {
       "constant": false,
@@ -120,5 +148,20 @@ export const TODO_LIST_ABI = [
       "stateMutability": "nonpayable",
       "type": "function",
       "signature": "0x455f5024"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_id",
+          "type": "uint256"
+        }
+      ],
+      "name": "deleteTodoItem",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function",
+      "signature": "0x12f616a2"
     }
-]
+  ]
