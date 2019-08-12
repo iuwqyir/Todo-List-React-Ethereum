@@ -13,6 +13,7 @@ ul {
 
 .todo-content {
   font-style: italic;
+  margin-right: 10px;
 }
 
 #completedTodoList .todo-content, 
