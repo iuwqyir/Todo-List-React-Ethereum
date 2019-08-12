@@ -34,6 +34,15 @@ class App extends Component {
       todoItems: [],
       loading: true
     };
+    this.createTodoItem = this.createTodoItem.bind(this);
+  }
+
+  createTodoItem(title, content) {
+    this.setState({ loading: true });
+    this.state.todoList.methods.createTodoItem(title, content).send({ from: this.state.account })
+    .once('receipt', (receipt) => {
+      this.setState({ loading: false });
+    });
   }
 
   render(){
@@ -50,10 +59,9 @@ class App extends Component {
         <div className="container-fluid">
           <div className="row">
             <main role="main" className="col-lg-12 d-flex justify-content-center">
-              <div id="loader" className="text-center">
-                <p className="text-center">Loading...</p>
-              </div>
-              <TodoList todoItems={this.state.todoItems}/>
+              { this.state.loading 
+                ? <div id="loader" className="text-center"><p className="text-center">Loading...</p></div> 
+                : <TodoList todoItems={this.state.todoItems} createTodoItem={this.createTodoItem}/> }
             </main>
           </div>
         </div>
