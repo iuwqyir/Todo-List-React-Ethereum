@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Web3 from 'web3';
 import './App.css';
 import { TODO_LIST_ABI, TODO_LIST_ADDRESS } from './config';
+import TodoList from './TodoList';
 
 class App extends Component {
   componentDidMount() {
@@ -22,6 +23,7 @@ class App extends Component {
         todoItems: [...this.state.todoItems, todoItem]
       });
     }
+    this.setState({ loading: false });
   }
 
   constructor(props) {
@@ -29,7 +31,8 @@ class App extends Component {
     this.state = {
       account: '',
       todoItemCount: 0,
-      todoItems: []
+      todoItems: [],
+      loading: true
     };
   }
 
@@ -50,34 +53,7 @@ class App extends Component {
               <div id="loader" className="text-center">
                 <p className="text-center">Loading...</p>
               </div>
-              <div id="content">
-              <form>
-                <div className="form-group">
-                  <input id="newTodoItemTitle" type="text" className="form-control" placeholder="Add a todo..." required/>
-                </div>
-                <div className="form-group">
-                  <input id="newTodoItemContent" type="text" className="form-control" placeholder="Give a little description..." required/>
-                </div>
-                <button type="submit" className="btn btn-primary">Submit</button>
-              </form>
-                <ul id="todoList" className="list-unstyled">
-                  { this.state.todoItems.map((todoItem, key) => {
-                    return(
-                      <div className="todoTemplate" className="checkbox" key={key}>
-                        <label>
-                          <input type="checkbox" />
-                          <span className="todo-title">{todoItem.title}</span>
-                          -
-                          <span className="todo-content">{todoItem.content}</span>
-                          <button type="button" className="btn btn-sm btn-danger .delete-btn">Delete</button>
-                        </label>
-                      </div>
-                    )
-                  })}
-                </ul>
-                <ul id="completedTodoList" className="list-unstyled">
-                </ul>
-              </div>
+              <TodoList todoItems={this.state.todoItems}/>
             </main>
           </div>
         </div>
