@@ -52,9 +52,10 @@ class TodoList extends Component {
         }
       }
     }
-    console.log(uncompletedItems);
-    this.setState({uncompletedItems});
-    this.setState({completedItems});
+    this.setState({
+      completedItems: completedItems,
+      uncompletedItems: uncompletedItems
+    });
     this.props.setLoading(false);
   }
 
